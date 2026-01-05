@@ -1,4 +1,3 @@
-
 # CSharp console program
 
 ## Usage
