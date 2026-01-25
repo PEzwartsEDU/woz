@@ -17,25 +17,24 @@ class Game
 	private void CreateRooms()
 	{
 		// Create the rooms
-		Room outside = new Room("outside the main entrance of the university");
-		Room theatre = new Room("in a lecture theatre");
-		Room pub = new Room("in the campus pub");
-		Room lab = new Room("in a computing lab");
-		Room office = new Room("in the computing admin office");
+		Room outside = new Room("You are outside of the main entrance of the university");
+		Room theatre = new Room("You are in the lecture theatre");
+		Room pub = new Room("You are in the campus pub");
+		Room lab = new Room("You are in the computing lab");
+		Room office = new Room("You are in the computing admin office");
+		
+		theatre.AddExit("West", 0, outside);
+		pub.AddExit("East", 0, outside);
+		lab.AddExit("North", 0, outside);
 
-		// Initialise room exits
-		outside.AddExit("east", theatre);
-		outside.AddExit("south", lab);
-		outside.AddExit("west", pub);
+		outside.AddExit("East", 0, theatre);
 
-		theatre.AddExit("west", outside);
+		outside.AddExit("West", 0, pub);
 
-		pub.AddExit("east", outside);
-
-		lab.AddExit("north", outside);
-		lab.AddExit("east", office);
-
-		office.AddExit("west", lab);
+		office.AddExit("West", 0, lab);
+		outside.AddExit("South", 0, lab);
+		
+		lab.AddExit("East", 0, office);
 
 		// Create your Items here
 		// ...
@@ -68,7 +67,7 @@ class Game
 	private void PrintWelcome()
 	{
 		Console.WriteLine();
-		Console.WriteLine("Welcome to Zuul!");
+		Console.WriteLine("Welcome to World of Zuul!");
 		Console.WriteLine("Zuul is a new, incredibly boring adventure game.");
 		Console.WriteLine("Type 'help' if you need help.");
 		Console.WriteLine();
@@ -96,6 +95,8 @@ class Game
 			case "go":
 				GoRoom(command);
 				break;
+			//case "look":
+				//Look();
 			case "quit":
 				wantToQuit = true;
 				break;
@@ -117,6 +118,10 @@ class Game
 		Console.WriteLine();
 		// let the parser print the commands
 		parser.PrintValidCommands();
+	}
+
+	private void Look() {
+		//Console.WriteLine(currentRoom.GetExit());
 	}
 
 	// Try to go to one direction. If there is an exit, enter the new
