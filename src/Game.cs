@@ -16,25 +16,37 @@ class Game
 	// Initialise the Rooms (and the Items)
 	private void CreateRooms()
 	{
-		// Create the rooms
-		Room outside = new Room("You are outside of the main entrance of the university");
-		Room theatre = new Room("You are in the lecture theatre");
-		Room pub = new Room("You are in the campus pub");
-		Room lab = new Room("You are in the computing lab");
-		Room office = new Room("You are in the computing admin office");
+		// Level 0
+
+		Room dungeon = new Room("[DUNGEON] You are in an dungeon !");
+		Room den = new Room("[DUNGEON] You are in an dragon's lair !");
+		Room secret = new Room("[DUNGEON] You are in an secret room !");
+		Room portal = new Room("[DUNGEON] You are in front of an wormhole; Enter?");
+		Room white_house = new Room("[WHITE_HOUSE] You are in the White House of the U.S.A !");
+		Room oval_office = new Room("[OVAL_OFFICE] You are in front of sleepy sleepy donald ...");
+
+		// Level 1
+
+		Room outside = new Room("[CAMPUS] You are on campus");
+		Room theatre = new Room("[CAMPUS] You are in the theatre");
+		Room pub = new Room("[CAMPUS] You are in the alcohol heaven");
+		Room lab = new Room("[CAMPUS] You are in the computing lab");
+		Room office = new Room("[CAMPUS] You are in the admin office");
+
+		// Level 1
 		
-		outside.AddExit("east", theatre);
-		outside.AddExit("south", lab);
-		outside.AddExit("west", pub);
+		//outside.AddExit("n", dungeon);
+		outside.AddExit("s", lab);
+		outside.AddExit("e", theatre);
+		outside.AddExit("w", pub);
+		
+		pub.AddExit("e", outside);
+		theatre.AddExit("w", outside);
 
-		theatre.AddExit("west", outside);
+		lab.AddExit("n", outside);
+		lab.AddExit("e", office);
 
-		pub.AddExit("east", outside);
-
-		lab.AddExit("north", outside);
-		lab.AddExit("east", office);
-
-		office.AddExit("west", lab);
+		office.AddExit("w", lab);
 		
 		// Create your Items here
 		// ...
@@ -66,9 +78,9 @@ class Game
 	// Print out the opening message for the player.
 	private void PrintWelcome()
 	{
-		Console.WriteLine();
-		Console.WriteLine("Welcome to World of Zuul!");
-		Console.WriteLine("Zuul is a new, incredibly boring adventure game.");
+		Console.WriteLine("WORLD OF ZUUL");
+		Console.WriteLine("Zuul an a vibrant realm filled with mystical creatures, ancient forests, and towering mountains. It is a land where magic thrives, and elemental forces govern nature.");
+		Console.WriteLine("Gandalf, a wise and powerful wizard, revered for his understanding of the arcane and his unwavering commitment to safeguarding Zuul from dark forces.");
 		Console.WriteLine("Type 'help' if you need help.");
 		Console.WriteLine();
 		Console.WriteLine(currentRoom.GetLongDescription());
