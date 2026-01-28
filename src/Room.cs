@@ -33,7 +33,7 @@ class Room
 	{
 		string str = "";
 		str += description;
-		str += ".\n";
+		str += "\n";
 		str += GetExitString();
 		return str;
 	}

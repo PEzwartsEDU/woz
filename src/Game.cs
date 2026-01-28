@@ -19,7 +19,17 @@ class Game
 		// Level 0
 
 		Room dungeon = new Room("[DUNGEON] You are in an dungeon !");
+
+		Room hallway0_1 = new Room("[DUNGEON] You are in an very long hallway !");
+		Room hallway0_2 = new Room("[DUNGEON] You are in an long hallway !");
+		Room door0_1 = new Room("You are in front of an locked door !");
+		Room hallway0_3 = new Room("[DUNGEON] You are in an hallway !");
+
 		Room den = new Room("[DUNGEON] You are in an dragon's lair !");
+
+		Room hallway1_1 = new Room("[DUNGEON] You are in an hallway !");
+		Room door1_1 = new Room("[DUNGEON] You are in an open door !");
+
 		Room secret = new Room("[DUNGEON] You are in an secret room !");
 		Room portal = new Room("[DUNGEON] You are in front of an wormhole; Enter?");
 		Room white_house = new Room("[WHITE_HOUSE] You are in the White House of the U.S.A !");
@@ -27,23 +37,46 @@ class Game
 
 		// Level 1
 
-		Room outside = new Room("[CAMPUS] You are on campus");
+		Room campus = new Room("[CAMPUS] You are on campus");
 		Room theatre = new Room("[CAMPUS] You are in the theatre");
 		Room pub = new Room("[CAMPUS] You are in the alcohol heaven");
 		Room lab = new Room("[CAMPUS] You are in the computing lab");
 		Room office = new Room("[CAMPUS] You are in the admin office");
 
+		// Level 0
+
+		dungeon.AddExit("s", campus);
+		dungeon.AddExit("n", hallway0_1);
+		
+		hallway0_1.AddExit("n", hallway0_2);
+		hallway0_1.AddExit("s", dungeon);
+
+		hallway0_1.AddExit("e", door0_1);
+		door0_1.AddExit("w", hallway0_1);
+
+		hallway0_2.AddExit("n", hallway0_3);
+		hallway0_2.AddExit("s", hallway0_2);
+
+		hallway0_3.AddExit("n", den);
+		hallway0_3.AddExit("s", hallway0_3);
+
+		den.AddExit("w", hallway1_1);
+		den.AddExit("e", den);
+
+		hallway1_1.AddExit("n", door1_1);
+		hallway1_1.AddExit("e", den);
+
 		// Level 1
 		
-		//outside.AddExit("n", dungeon);
-		outside.AddExit("s", lab);
-		outside.AddExit("e", theatre);
-		outside.AddExit("w", pub);
+		campus.AddExit("n", dungeon);
+		campus.AddExit("s", lab);
+		campus.AddExit("e", theatre);
+		campus.AddExit("w", pub);
 		
-		pub.AddExit("e", outside);
-		theatre.AddExit("w", outside);
+		pub.AddExit("e", campus);
+		theatre.AddExit("w", campus);
 
-		lab.AddExit("n", outside);
+		lab.AddExit("n", campus);
 		lab.AddExit("e", office);
 
 		office.AddExit("w", lab);
@@ -54,7 +87,7 @@ class Game
 		// ...
 
 		// Start game outside
-		currentRoom = outside;
+		currentRoom = campus;
 	}
 
 	//  Main play routine. Loops until end of play.
@@ -107,8 +140,11 @@ class Game
 			case "go":
 				GoRoom(command);
 				break;
-			//case "look":
-				//Look();
+			case "look":
+				Look();
+				break;
+			case "status":
+				break;
 			case "quit":
 				wantToQuit = true;
 				break;
@@ -133,7 +169,7 @@ class Game
 	}
 
 	private void Look() {
-		//Console.WriteLine(currentRoom.GetExit());
+		Console.WriteLine(currentRoom);
 	}
 
 	// Try to go to one direction. If there is an exit, enter the new
