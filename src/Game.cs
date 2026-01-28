@@ -61,10 +61,11 @@ class Game
 		hallway0_3.AddExit("s", hallway0_3);
 
 		den.AddExit("w", hallway1_1);
-		den.AddExit("e", den);
 
 		hallway1_1.AddExit("n", door1_1);
 		hallway1_1.AddExit("e", den);
+
+		door1_1.AddExit("s", hallway1_1);
 
 		// Level 1
 		
@@ -168,10 +169,6 @@ class Game
 		parser.PrintValidCommands();
 	}
 
-	private void Look() {
-		Console.WriteLine(currentRoom);
-	}
-
 	// Try to go to one direction. If there is an exit, enter the new
 	// room, otherwise print an error message.
 	private void GoRoom(Command command)
@@ -195,5 +192,13 @@ class Game
 
 		currentRoom = nextRoom;
 		Console.WriteLine(currentRoom.GetLongDescription());
+	}
+
+	private void Look() {
+		Console.WriteLine(currentRoom);
+	}
+	
+	private void Status() {
+		Console.WriteLine(currentRoom);
 	}
 }
