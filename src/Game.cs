@@ -18,7 +18,8 @@ class Game
 	{
 		// Level 0
 
-		Room dungeon = new Room("[DUNGEON] You are in an dungeon !");
+		Room entrance_dungeon = new Room("[CAMPUS] You are in front of a flight of stone stairs ?HMMMMM?");
+		Room dungeon = new Room("[DUNGGEON] You are in an dungeon !");
 
 		Room hallway0_1 = new Room("[DUNGEON] You are in an very long hallway !");
 		Room hallway0_2 = new Room("[DUNGEON] You are in an long hallway !");
@@ -45,7 +46,12 @@ class Game
 
 		// Level 0
 
-		dungeon.AddExit("s", campus);
+		Room valhalla = new Room("[VALHALLA] You gave reached valhalla. Game over.");
+
+		entrance_dungeon.AddExit("s", campus);
+		entrance_dungeon.AddExit("n", dungeon);
+
+		dungeon.AddExit("s", entrance_dungeon);
 		dungeon.AddExit("n", hallway0_1);
 		
 		hallway0_1.AddExit("n", hallway0_2);
@@ -69,7 +75,7 @@ class Game
 
 		// Level 1
 		
-		campus.AddExit("n", dungeon);
+		campus.AddExit("n", entrance_dungeon);
 		campus.AddExit("s", lab);
 		campus.AddExit("e", theatre);
 		campus.AddExit("w", pub);
@@ -163,8 +169,7 @@ class Game
 	private void PrintHelp()
 	{
 		Console.WriteLine("You are lost. You are alone.");
-		Console.WriteLine("You wander around at the university.");
-		Console.WriteLine();
+		Console.WriteLine("You wandering around.\n");
 		// let the parser print the commands
 		parser.PrintValidCommands();
 	}
