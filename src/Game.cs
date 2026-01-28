@@ -112,9 +112,9 @@ class Game
 	// Print out the opening message for the player.
 	private void PrintWelcome()
 	{
-		Console.WriteLine("WORLD OF ZUUL");
-		Console.WriteLine("Zuul an a vibrant realm filled with mystical creatures, ancient forests, and towering mountains. It is a land where magic thrives, and elemental forces govern nature.");
-		Console.WriteLine("Gandalf, a wise and powerful wizard, revered for his understanding of the arcane and his unwavering commitment to safeguarding Zuul from dark forces.");
+		Console.WriteLine("WORLD OF ZUUL.\n");
+		Console.WriteLine("Zuul an a vibrant realm filled with mystical creatures, ancient forests, and towering mountains. It is a land where magic thrives, and elemental forces govern nature.\n");
+		Console.WriteLine("Gandalf, a wise and powerful wizard, revered for his understanding of the arcane and his unwavering commitment to safeguarding Zuul from dark forces.\n");
 		Console.WriteLine("Type 'help' if you need help.");
 		Console.WriteLine();
 		Console.WriteLine(currentRoom.GetLongDescription());
@@ -195,10 +195,10 @@ class Game
 	}
 
 	private void Look() {
-		Console.WriteLine(currentRoom);
+		Console.WriteLine(currentRoom.GetLongDescription());
 	}
 	
 	private void Status() {
-		Console.WriteLine(currentRoom);
+		Console.WriteLine();
 	}
 }
