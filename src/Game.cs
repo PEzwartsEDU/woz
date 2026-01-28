@@ -195,7 +195,7 @@ class Game
 	}
 
 	private void Look() {
-		Console.WriteLine(currentRoom.GetLongDescription());
+		Console.WriteLine(currentRoom.GetShortDescription());
 	}
 	
 	private void Status() {
