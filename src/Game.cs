@@ -23,19 +23,19 @@ class Game
 		Room lab = new Room("You are in the computing lab");
 		Room office = new Room("You are in the computing admin office");
 		
-		theatre.AddExit("West", 0, outside);
-		pub.AddExit("East", 0, outside);
-		lab.AddExit("North", 0, outside);
+		outside.AddExit("east", theatre);
+		outside.AddExit("south", lab);
+		outside.AddExit("west", pub);
 
-		outside.AddExit("East", 0, theatre);
+		theatre.AddExit("west", outside);
 
-		outside.AddExit("West", 0, pub);
+		pub.AddExit("east", outside);
 
-		office.AddExit("West", 0, lab);
-		outside.AddExit("South", 0, lab);
+		lab.AddExit("north", outside);
+		lab.AddExit("east", office);
+
+		office.AddExit("west", lab);
 		
-		lab.AddExit("East", 0, office);
-
 		// Create your Items here
 		// ...
 		// And add them to the Rooms
