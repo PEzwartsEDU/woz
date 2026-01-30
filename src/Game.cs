@@ -4,12 +4,14 @@ class Game
 {
 	// Private fields
 	private Parser parser;
-	private Room currentRoom;
+	private Player player;
+	//private Room currentRoom;
 
 	// Constructor
 	public Game()
 	{
 		parser = new Parser();
+		player = new Player();
 		CreateRooms();
 	}
 
@@ -90,7 +92,7 @@ class Game
 		// ...
 
 		// Start game outside
-		currentRoom = campus;
+		player.CurrentRoom = campus;
 	}
 
 	//  Main play routine. Loops until end of play.
@@ -119,7 +121,7 @@ class Game
 		Console.WriteLine("Gandalf, a wise and powerful wizard, revered for his understanding of the arcane and his unwavering commitment to safeguarding Zuul from dark forces.\n");
 		Console.WriteLine("Type 'help' if you need help.");
 		Console.WriteLine();
-		Console.WriteLine(currentRoom.GetLongDescription());
+		Console.WriteLine(player.CurrentRoom.GetLongDescription());
 	}
 
 	// Given a command, process (that is: execute) the command.
@@ -184,19 +186,19 @@ class Game
 		string direction = command.SecondWord;
 
 		// Try to go to the next room.
-		Room nextRoom = currentRoom.GetExit(direction);
+		Room nextRoom = player.CurrentRoom.GetExit(direction);
 		if (nextRoom == null)
 		{
 			Console.WriteLine("There is no door to "+direction+"!");
 			return;
 		}
 
-		currentRoom = nextRoom;
-		Console.WriteLine(currentRoom.GetLongDescription());
+		player.CurrentRoom = nextRoom;
+		Console.WriteLine(player.CurrentRoom.GetLongDescription());
 	}
 
 	private void Look() {
-		Console.WriteLine(currentRoom.GetShortDescription());
+		Console.WriteLine(player.CurrentRoom.GetShortDescription());
 	}
 	
 	private void Status() {

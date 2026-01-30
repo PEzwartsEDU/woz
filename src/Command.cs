@@ -10,14 +10,12 @@ class Command
 		CommandWord = first;
 		SecondWord = second;
 	}
-
 	
 	// Return true if this command was not understood.
 	public bool IsUnknown()
 	{
 		return CommandWord == null;
 	}
-
 	
 	// Return true if the command has a second word.
 	public bool HasSecondWord()
