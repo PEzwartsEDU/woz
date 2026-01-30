@@ -59,6 +59,8 @@ class Game
 		hallway0.AddExit("s", dungeon);
 		hallway0.AddExit("e", door0);
 
+		door0.AddExit("w", hallway0);
+
 		den.AddExit("s", hallway0);
 		den.AddExit("w", hallway1);
 
