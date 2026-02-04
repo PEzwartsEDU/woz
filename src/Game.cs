@@ -92,7 +92,7 @@ class Game
 		// ...
 
 		// Start game outside
-		
+
 		player.CurrentRoom = campus;
 	}
 
@@ -108,6 +108,10 @@ class Game
 		{
 			Command command = parser.GetCommand();
 			finished = ProcessCommand(command);
+
+			if (player.health == 0) {
+				break;
+			}
 		}
 		Console.WriteLine("Thank you for playing.");
 		Console.WriteLine("Press [Enter] to continue.");
@@ -195,6 +199,7 @@ class Game
 			return;
 		}
 
+		player.health = player.health - 5;
 		player.CurrentRoom = nextRoom;
 		Console.WriteLine(player.CurrentRoom.GetLongDescription());
 	}
@@ -205,5 +210,9 @@ class Game
 	
 	private void Status() {
 		Console.WriteLine(player.health);
+	}
+
+	private void Death() {
+		Console.WriteLine("## GAME OVER ##");
 	}
 }
