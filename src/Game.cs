@@ -92,6 +92,7 @@ class Game
 		// ...
 
 		// Start game outside
+		
 		player.CurrentRoom = campus;
 	}
 
@@ -149,6 +150,7 @@ class Game
 				Look();
 				break;
 			case "status":
+				Status();
 				break;
 			case "quit":
 				wantToQuit = true;
@@ -202,6 +204,6 @@ class Game
 	}
 	
 	private void Status() {
-		Console.WriteLine();
+		Console.WriteLine(player.health);
 	}
 }

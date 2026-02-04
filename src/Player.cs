@@ -1,7 +1,7 @@
 class Player {
     public Room CurrentRoom { get; set; }
 
-    private int health;
+    public int health;
 
     public Player()
     {
