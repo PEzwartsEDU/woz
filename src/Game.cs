@@ -109,7 +109,7 @@ class Game
 			Command command = parser.GetCommand();
 			finished = ProcessCommand(command);
 
-			if (player.health == 0) {
+			if (player.IsAlive() == false) {
 				break;
 			}
 		}
@@ -199,7 +199,7 @@ class Game
 			return;
 		}
 
-		player.health = player.health - 5;
+		player.Damage(5);
 		player.CurrentRoom = nextRoom;
 		Console.WriteLine(player.CurrentRoom.GetLongDescription());
 	}
