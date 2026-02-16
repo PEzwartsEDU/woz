@@ -27,4 +27,18 @@ class Inventory {
         // Return Item of null
         return null;
     }
+
+    public int TotalWeight() {
+        int total = 0;
+        // TODO implementeer:
+        // Loop door alle items
+        // Tel alle gewichten op
+        return total;
+    }
+
+    public int FreeWeight() {
+        // TODO implementeer:
+        // Vergelijk MaxWeight en TotalWeight()
+        return ...;
+    }
 }
