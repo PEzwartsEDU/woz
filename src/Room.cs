@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 
-class Room
-{
+class Room {
 	private string description;
 	private Dictionary<string, Room> exits;
+	
+	//private Inventory chest;
+	//public Inventory chest;
 
 	public Room(string desc)
 	{
