@@ -1,5 +1,6 @@
 class Inventory {
     private int MaxWeight;
+    private int CurrentWeight;
     private Dictionary<string, Item> items;
     
     public Inventory(int maxWeight) {
@@ -8,7 +9,15 @@ class Inventory {
     }
 
     public bool Put(string itemName, Item item) {
-        return false;
+        if (item.Weight == 0) {
+            return false;
+        }
+
+        if ((CurrentWeight + item.Weight) >= MaxWeight) {
+            return false;
+        }
+
+        return true;
     }
 
     public Item Get(string itemName) {
