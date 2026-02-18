@@ -3,7 +3,7 @@ class Inventory {
     private Dictionary<string, Item> items;
     
     public Inventory(int maxWeight) {
-        this.maxWeight = maxWeight;
+        this.MaxWeight = maxWeight;
         this.items = new Dictionary<string, Item>();
     }
 
@@ -21,6 +21,6 @@ class Inventory {
     }
 
     public int FreeWeight() {
-        // return 1;
+        return 1;
     }
 }
