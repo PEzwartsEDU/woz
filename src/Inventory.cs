@@ -17,6 +17,8 @@ class Inventory {
             return false;
         }
 
+        items.Add(item.Desc, item);
+
         return true;
     }
 
