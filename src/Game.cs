@@ -141,6 +141,12 @@ class Game
 			case "status":
 				Status();
 				break;
+			case "grab":
+				TakeFromChest();
+				break;
+			case "drop":
+				DropToChest();
+				break;
 			case "quit":
 				wantToQuit = true;
 				break;
