@@ -5,6 +5,7 @@ class Inventory {
     
     public Inventory(int maxWeight) {
         this.MaxWeight = maxWeight;
+        this.CurrentWeight = 0;
         this.items = new Dictionary<string, Item>();
     }
 
@@ -17,12 +18,18 @@ class Inventory {
             return false;
         }
 
-        items.Add(item.Desc, item);
+        items.Add(itemName, item);
 
         return true;
     }
 
     public Item Get(string itemName) {
+        foreach (string item in items.Keys) {
+            if (item == itemName) {
+                items.Remove(item);
+            }
+        }
+
         return null;
     }
 
