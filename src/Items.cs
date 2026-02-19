@@ -1,11 +1,11 @@
 class Item {
     public int Weight { get; }
-    public string Desc { get; }
     public string Name { get; }
+    public string Desc { get; }
 
-    public Item(int weight, string desc, string name) {
+    public Item(int weight, string name, string desc) {
         Weight = weight;
-        Desc = desc;
         Name = name;
+        Desc = desc;
     }
 }

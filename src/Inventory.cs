@@ -1,11 +1,11 @@
 class Inventory {
     private int MaxWeight;
-    private int TotalWeight;
+    private int CurrentWeight;
     private Dictionary<string, Item> items;
     
-    public Inventory(int maxWeight) {
-        this.MaxWeight = maxWeight;
-        this.TotalWeight = 0;
+    public Inventory(int maxweight) {
+        this.MaxWeight = maxweight;
+        this.CurrentWeight = 0;
         this.items = new Dictionary<string, Item>();
     }
 
@@ -14,13 +14,13 @@ class Inventory {
             return false;
         }
 
-        if ((TotalWeight + item.Weight) >= MaxWeight) {
-            TotalWeight = TotalWeight - item.Weight;
+        if ((CurrentWeight + item.Weight) >= MaxWeight) {
+            CurrentWeight = CurrentWeight - item.Weight;
             return false;
         }
 
         items.Add(itemName, item);
-        TotalWeight = TotalWeight + item.Weight;
+        CurrentWeight = CurrentWeight + item.Weight;
 
         return true;
     }
@@ -29,6 +29,7 @@ class Inventory {
         foreach (KeyValuePair<string, Item> item in items) {
             if (item.Key == itemName) {
                 items.Remove(item.Key);
+                CurrentWeight = CurrentWeight - item.Value.Weight;
 
                 return item.Value;
             }
@@ -37,19 +38,27 @@ class Inventory {
         return null;
     }
 
-    public int ShowTotalWeight() {
-        return TotalWeight;
+    public int GetCurrentWeight() {
+        return CurrentWeight;
     }
 
-    private void AddTotalWeight(int amount) {
-        TotalWeight = TotalWeight + amount;
+    public int GetDiffWeight() {
+        return (MaxWeight - CurrentWeight);
     }
 
-    private void RemoveTotalWeight(int amount) {
-        TotalWeight = TotalWeight - amount;
+    private void AddCurrentWeight(int amount) {
+        CurrentWeight = CurrentWeight + amount;
     }
 
-    public int ShowFreeWeight() {
-        return (MaxWeight - TotalWeight);
+    private void RemoveCurrentWeight(int amount) {
+        CurrentWeight = CurrentWeight - amount;
     }
+
+    //public void AddItem(string itemName, Item item) {
+        //items.Add(itemName, item);
+    //}
+
+    //public void RemoveItem(string itemName, Item item) {
+        //items.Remove(itemName, item);
+    //}
 }
