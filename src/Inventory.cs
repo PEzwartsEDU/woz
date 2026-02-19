@@ -15,7 +15,7 @@ class Inventory {
         }
 
         if ((CurrentWeight + item.Weight) >= MaxWeight) {
-            CurrentWeight = 0;
+            CurrentWeight = CurrentWeight - item.Weight;
             return false;
         }
 
