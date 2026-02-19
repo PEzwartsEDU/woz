@@ -4,13 +4,17 @@ class Room {
 	private string description;
 	private Dictionary<string, Room> exits;
 	
-	//private Inventory chest;
-	//public Inventory chest;
+	private Inventory chest;
+	public Inventory Chest
+	{
+		get { return chest; }
+	}
 
 	public Room(string desc)
 	{
 		description = desc;
 		exits = new Dictionary<string, Room>();
+		chest = new Inventory(10);
 	}
 
 	public void AddExit(string direction, Room neighbor)
