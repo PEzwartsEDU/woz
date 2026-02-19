@@ -20,6 +20,7 @@ class Inventory {
         }
 
         items.Add(itemName, item);
+        TotalWeight = TotalWeight + item.Weight;
 
         return true;
     }
