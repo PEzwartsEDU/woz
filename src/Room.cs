@@ -8,6 +8,7 @@ class Room {
 	public Inventory Chest
 	{
 		get { return chest; }
+		//set { chest = value; }
 	}
 
 	public Room(string desc)

@@ -24,8 +24,8 @@ class Game
 		Room door0 = new Room("You are in front of an locked door !");
 
 		Room den = new Room("[DUNGEON] You are in an dragon's lair !");
-		//Item den = new Item(10, "sword", "Powerful sword");
-		//den.Chest.Put(den);
+		Item sword = new Item(10, "sword", "Powerful sword");
+		den.Chest.Put("sword", sword);
 
 		Room hallway1 = new Room("[DUNGEON] You are in an hallway !");
 		Room door1 = new Room("[DUNGEON] You are in an open door !");
