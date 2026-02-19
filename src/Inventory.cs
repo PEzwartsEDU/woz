@@ -36,8 +36,6 @@ class Inventory {
         return null;
     }
 
-    // TotalWeight perse nodig? Want er is CurrentWeight waarvan dat al word opgeteld...
-
     public int ShowTotalWeight() {
         return TotalWeight;
     }
