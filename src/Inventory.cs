@@ -39,16 +39,14 @@ class Inventory {
     // TotalWeight perse nodig? Want er is CurrentWeight waarvan dat al word opgeteld...
 
     public int ShowTotalWeight() {
-        int total = 0;
-
-        return total;
+        return TotalWeight;
     }
 
-    public void AddTotalWeight(int amount) {
+    private void AddTotalWeight(int amount) {
         TotalWeight = TotalWeight + amount;
     }
 
-    public void RemoveTotalWeight(int amount) {
+    private void RemoveTotalWeight(int amount) {
         TotalWeight = TotalWeight - amount;
     }
 
