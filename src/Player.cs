@@ -11,6 +11,14 @@ class Player {
         health = 100;
         alive = true;
     }
+
+    public bool TakeFromChest() {
+        return true;
+    }
+
+    public bool DropToChest() {
+        return true;
+    }
     
     public void Damage(int amount) {
         health = health - amount;
