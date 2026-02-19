@@ -24,9 +24,11 @@ class Inventory {
     }
 
     public Item Get(string itemName) {
-        foreach (string item in items.Keys) {
-            if (item == itemName) {
-                items.Remove(item);
+        foreach (KeyValuePair<string, Item> item in items) {
+            if (item.Key == itemName) {
+                items.Remove(item.Key);
+
+                return item.Value;
             }
         }
 
