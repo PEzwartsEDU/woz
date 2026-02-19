@@ -1,11 +1,11 @@
 class Inventory {
     private int MaxWeight;
-    private int CurrentWeight;
+    private int TotalWeight;
     private Dictionary<string, Item> items;
     
     public Inventory(int maxWeight) {
         this.MaxWeight = maxWeight;
-        this.CurrentWeight = 0;
+        this.TotalWeight = 0;
         this.items = new Dictionary<string, Item>();
     }
 
@@ -14,8 +14,8 @@ class Inventory {
             return false;
         }
 
-        if ((CurrentWeight + item.Weight) >= MaxWeight) {
-            CurrentWeight = CurrentWeight - item.Weight;
+        if ((TotalWeight + item.Weight) >= MaxWeight) {
+            TotalWeight = TotalWeight - item.Weight;
             return false;
         }
 
@@ -36,12 +36,23 @@ class Inventory {
         return null;
     }
 
-    public int TotalWeight() {
+    // TotalWeight perse nodig? Want er is CurrentWeight waarvan dat al word opgeteld...
+
+    public int ShowTotalWeight() {
         int total = 0;
+
         return total;
     }
 
-    public int FreeWeight() {
-        return 1;
+    public void AddTotalWeight(int amount) {
+        TotalWeight = TotalWeight + amount;
+    }
+
+    public void RemoveTotalWeight(int amount) {
+        TotalWeight = TotalWeight - amount;
+    }
+
+    public int ShowFreeWeight() {
+        return (MaxWeight - TotalWeight);
     }
 }
